@@ -16,7 +16,10 @@
                 pictureSource=navigator.camera.PictureSourceType;
                 destinationType=navigator.camera.DestinationType;
             }
-             
+            
+            function okay(){
+            	//nothing
+            }
             function getPhoto(imageData) {
                 var smallImage = document.getElementById('smallImage');
                  
@@ -25,10 +28,16 @@
                  
                  
                 smallImage.src = "data:image/jpeg;base64," + imageData;
+                navigator.notification.alert(
+					'Your Photo has been uploaded',  // message
+					okay,                           // callback
+				    'Photo Uploaded',              // title
+				    'OK'                          // buttonName
+				);
             }
              
             function capturePhoto() {
-                navigator.camera.getPicture(getPhoto, onFail, { quality: 50 });
+                navigator.camera.getPicture(getPhoto, onFail, { sourceType:1, quality: 60 });
             }
             
              
