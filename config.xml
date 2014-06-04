@@ -15,6 +15,8 @@
     <author email="curtis.korchynski@datadrill.ca">
         Curtis Korchynski
     </author>
-	<gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
+	<gap:plugin name="org.apache.cordova.device-orientation" version="0.3.5" />
 	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
+	<gap:plugin name="org.apache.cordova.device-motion" version="0.2.6" />
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.7" />
 </widget>

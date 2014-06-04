@@ -2,51 +2,47 @@
 <html>
     <head>
         <title>Capture Photo</title>
-         
+        <meta charset="utf-8"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, width=device-width, height=device-height"/>
+        <title>Hello World</title> 
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.15&client=gme-datadrill&sensor=false&libraries=drawing,weather"></script>
         <script src="phonegap.js"></script>
         <script type="text/javascript" charset="utf-8">
- 
-            var pictureSource,
-                destinationType
-             
-            document.addEventListener("deviceready",loaded,false);
-             
-            function loaded() {
-            	navigator.notification.alert("PhoneGap is working!!");
-                pictureSource=navigator.camera.PictureSourceType;
-                destinationType=navigator.camera.DestinationType;
-            }
-            
-            function okay(){
-            	//nothing
-            }
-            function getPhoto(imageData) {
-                var smallImage = document.getElementById('smallImage');
-                 
-                 
-                smallImage.style.display = 'block';
-                 
-                 
-                smallImage.src = "data:image/jpeg;base64," + imageData;
-                
-            }
-             
-            function capturePhoto() {
-          
-                navigator.camera.getPicture(getPhoto, onFail, { quality: 50,
-        			destinationType: destinationType.DATA_URL,
-        			correctOrientation:true });
-            }
-            
-             
-            function onFail(message) {
-                alert('Failed because: ' + message);
-            }
-             
-            </script>
+ 			function initialize()
+ 			{
+ 				this.bindEvents()
+ 			}
+ 			function bindEvents()
+ 			{
+ 				document.addEventListener('deviceready', this.onDeviceReady, false)
+ 			}
+ 			function onDeviceReady()
+ 			{
+ 				navigator.notification.alert("PhoneGap is working!!");
+ 				navigator.geolocation.getCurrentPosition(onSuccess, onError)
+ 		
+ 			}
+ 			function onSuccess(position)
+ 			{
+ 				var longitude = position.coords.longitude;
+ 				var latitude = position.coords.latitude;
+ 				var latlong = new google.maps.LatLng(latitude, longitude)
+ 				
+ 				var mapOptions = {
+ 					center: latlong,
+ 					zoom:16,
+ 					mapTypeId: google.maps.MapTypeId.ROADMAP
+ 				};
+ 				var map = new google.maps.Map(document.getElementById("geolocation"), mapOptions);
+ 			} 
+ 			function onError(error)
+ 			{
+ 				alert('code: ' + error.code + "\n message: " + error.message + "\n")
+ 			}
+ 		</script>
     </head>
-    <body>
-        <button onclick="capturePhoto();">Capture Photo</button> <br>
-        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <body onload='initialize()'>
+        <div id="geolocation" style='width:640px;height:1136;'></div>
     </body>
 </html>
