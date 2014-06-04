@@ -1,26 +1,45 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Demo</title>
-	</head>
-	<body>
-		<div id="camera">
-		    <button id='demo' class="camera-control">Capture Photo</button>
-		 
-		    <div style="text-align:center;margin:20px;">
-		        <img id="cameraPic" src="" style="width:auto;height:120px;"></img>
-		    </div>
-		</div>
-	
-		<script src="js/zepto.js"></script>
-		<script src='js/demo.js'></script>
-		<script src="cordova.js"></script>
-		<script>
-		$("#demo").click(function(){
-			DEMO.DoIt($('#results'))
-		})
-		$("#clear").click(function(){
-			$("#results").html("")
-		})
-		</script>
-	</body>
+    <head>
+        <title>Capture Photo</title>
+         
+        <script src="phonegap.js"></script>
+        <script type="text/javascript" charset="utf-8">
+ 
+            var pictureSource,
+                destinationType
+             
+            document.addEventListener("deviceready",loaded,false);
+             
+            function loaded() {
+            	navigator.notification.alert("PhoneGap is working!!");
+                pictureSource=navigator.camera.PictureSourceType;
+                destinationType=navigator.camera.DestinationType;
+            }
+             
+            function getPhoto(imageData) {
+                var smallImage = document.getElementById('smallImage');
+                 
+                 
+                smallImage.style.display = 'block';
+                 
+                 
+                smallImage.src = "data:image/jpeg;base64," + imageData;
+            }
+             
+            function capturePhoto() {
+                navigator.camera.getPicture(getPhoto, onFail, { quality: 50 });
+            }
+            
+             
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }
+             
+            </script>
+    </head>
+    <body>
+        <button onclick="capturePhoto();">Capture Photo</button> <br>
+        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    </body>
 </html>
