@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>Demo</title>
+	</head>
+	<body>
+		<button id='demo'>Do it</button>
+		<button id='clear'>Clear</button>
+		<div id='results'></div>
+	
+		<script src="js/zepto.js"></script>
+		<script src='js/demo.js'></script>
+		<script>
+		$("#demo").click(function(){
+			DEMO.DoIt($('#results'))
+		})
+		$("#clear").click(function(){
+			$("#results").html("")
+		})
+		</script>
+	</body>
+</html>
