@@ -3,12 +3,17 @@
 		<title>Demo</title>
 	</head>
 	<body>
-		<button id='demo'>Do it</button>
-		<button id='clear'>Clear</button>
-		<div id='results'></div>
+		<div id="camera">
+		    <button id='demo' class="camera-control">Capture Photo</button>
+		 
+		    <div style="text-align:center;margin:20px;">
+		        <img id="cameraPic" src="" style="width:auto;height:120px;"></img>
+		    </div>
+		</div>
 	
 		<script src="js/zepto.js"></script>
 		<script src='js/demo.js'></script>
+		<script src="cordova.js"></script>
 		<script>
 		$("#demo").click(function(){
 			DEMO.DoIt($('#results'))
