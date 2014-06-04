@@ -28,18 +28,14 @@
                  
                  
                 smallImage.src = "data:image/jpeg;base64," + imageData;
-                navigator.notification.alert(
-					'Your Photo has been uploaded',  // message
-					okay,                           // callback
-				    'Photo Uploaded',              // title
-				    'OK'                          // buttonName
-				);
+                
             }
              
             function capturePhoto() {
           
                 navigator.camera.getPicture(getPhoto, onFail, { quality: 50,
-        			destinationType: destinationType.DATA_URL });
+        			destinationType: destinationType.DATA_URL,
+        			correctOrientation:true });
             }
             
              
