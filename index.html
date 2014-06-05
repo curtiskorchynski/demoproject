@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Capture Photo</title>
-        
         <title>Hello World</title> 
         <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.15&client=gme-datadrill&sensor=false&libraries=drawing,weather"></script>-->
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.15&key=AIzaSyA4xrmMrGqikrpvNAm-gTxaQkqi13DYuQU&sensor=false&libraries=drawing,weather"></script>
         <script src="phonegap.js"></script>
         <style type="text/css">
+        	body
+        	{
+        		margin:0px;
+        		padding:0px;
+        	}
         	html, body, #geolocation{
         		height:100%
         	}
@@ -51,6 +54,11 @@
  		</script>
     </head>
     <body onload='initialize()'>
-        <div id="geolocation" style="width:100%;height:100%;"></div>
+        <div id="geolocation" style="width:100%;height:100%;">
+	        <div style='width=100%; background-color:white; opacity:0.4;'>
+	        	<img style='position:absolute;left:50%;top:50%' src='/img/ajax-loader.gif' />
+	        </div>
+
+        </div>
     </body>
 </html>
