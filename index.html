@@ -32,8 +32,16 @@
  			function onDeviceReady()
  			{
  				alert("GOT TO ON DEVICE READY")
- 				navigator.geolocation.getCurrentPosition(onSuccess, onError)
- 		
+ 				try
+ 				{
+ 					navigator.geolocation.getCurrentPosition(onSuccess, onError)
+ 				}
+ 				catch(err)
+ 				{
+ 					alert(err)
+ 				}
+ 					
+ 			
  			}
  			function onSuccess(position)
  			{
