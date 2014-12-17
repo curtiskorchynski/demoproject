@@ -31,11 +31,13 @@
  			}
  			function onDeviceReady()
  			{
+ 				alert("GOT TO ON DEVICE READY")
  				navigator.geolocation.getCurrentPosition(onSuccess, onError)
  		
  			}
  			function onSuccess(position)
  			{
+ 				alert("GOT TO ON SUCCESS")
  				var longitude = position.coords.longitude;
  				var latitude = position.coords.latitude;
  				var latlong = new google.maps.LatLng(latitude, longitude)
@@ -45,6 +47,7 @@
  					mapTypeId: google.maps.MapTypeId.ROADMAP
  				};
  				var map = new google.maps.Map(document.getElementById("geolocation"), mapOptions);
+ 				console.log("FINISHED ON SUCCESS")
  			} 
  			function onError(error)
  			{
