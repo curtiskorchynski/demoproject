@@ -34,7 +34,8 @@
  				alert("GOT TO ON DEVICE READY")
  				try
  				{
- 					navigator.geolocation.getCurrentPosition(myonSuccess, myonError)
+ 					options = {timeout:31000, enableHighAccuracy:true, maximumAge:90000};
+ 					navigator.geolocation.getCurrentPosition(myonSuccess, myonError, options)
  					alert("GOT HERE")
  				}
  				catch(err)
