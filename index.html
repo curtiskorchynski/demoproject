@@ -31,16 +31,14 @@
  			}
  			function onDeviceReady()
  			{
- 				alert("GOT TO ON DEVICE READY")
  				try
- 				{
+ 				{ 
+ 					//after trying on new s5 geolocation didnt work until i put in the following options 
  					options = {timeout:31000, enableHighAccuracy:true, maximumAge:90000};
  					navigator.geolocation.getCurrentPosition(myonSuccess, myonError, options)
- 					alert("GOT HERE")
  				}
  				catch(err)
  				{
- 					alert("GOT HERE ERROR")
  					alert(err)
  				}
  					
@@ -48,7 +46,6 @@
  			}
  			function myonSuccess(position)
  			{
- 				alert("GOT TO ON SUCCESS")
  				var longitude = position.coords.longitude;
  				var latitude = position.coords.latitude;
  				var latlong = new google.maps.LatLng(latitude, longitude)
@@ -58,7 +55,6 @@
  					mapTypeId: google.maps.MapTypeId.ROADMAP
  				};
  				var map = new google.maps.Map(document.getElementById("geolocation"), mapOptions);
- 				console.log("FINISHED ON SUCCESS")
  			} 
  			function myonError(error)
  			{
