@@ -34,10 +34,12 @@
  				alert("GOT TO ON DEVICE READY")
  				try
  				{
- 					navigator.geolocation.getCurrentPosition(onSuccess, onError)
+ 					navigator.geolocation.getCurrentPosition(this.onSuccess, this.onError)
+ 					alert("GOT HERE")
  				}
  				catch(err)
  				{
+ 					alert("GOT HERE ERROR")
  					alert(err)
  				}
  					
